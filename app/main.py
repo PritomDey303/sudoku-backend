@@ -5,6 +5,8 @@ import numpy as np
 from PIL import Image
 import pytesseract
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
+
 from io import BytesIO
 from fastapi.responses import JSONResponse
 
