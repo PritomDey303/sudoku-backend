@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: sudoku-ocr-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: ./start.sh
+    runtime: ubuntu
+    plan: free
