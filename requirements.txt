@@ -1,7 +1,8 @@
 fastapi
 uvicorn
-pytesseract
-opencv-python-headless  # Instead of opencv-python
-numpy
-Pillow
 python-multipart
+opencv-python
+numpy
+pillow
+keras
+tensorflow
