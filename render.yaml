@@ -1,11 +1,7 @@
-
-
 services:
   - type: web
-    name: sudoku-ocr-api
+    name: sudoku-api
     env: python
-    buildCommand: |
-      apt-get update && apt-get install -y tesseract-ocr
-      pip install -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 10000
+    buildCommand: pip install -r requirements.txt
+    startCommand: ./build.sh
     plan: free
