@@ -8,9 +8,17 @@ import shutil
 import uuid
 import os
 import os
-print(os.getcwd())
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"], 
+)
 
 model_path = os.path.join(os.getcwd(), 'public', 'model', 'mnist_cnn_model.h5')
 print("Model Path:", model_path)
