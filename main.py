@@ -28,7 +28,22 @@ model = load_model(model_path)
 ###########
 def resize_image(image, width=450, height=450):
     return cv2.resize(image, (width, height))
+def add_padding_to_image_array(image, top=5, bottom=5, left=5, right=5, padding_color=(255,255,255)):
 
+    if image is None:
+        raise ValueError("Input image is None. Please provide a valid image array.")
+
+    padded_image = cv2.copyMakeBorder(
+        image,
+        top,
+        bottom,
+        left,
+        right,
+        cv2.BORDER_CONSTANT,
+        value=padding_color
+    )
+
+    return padded_image
 def load_image(image_path):
     return cv2.imread(image_path)
 
@@ -156,6 +171,7 @@ async def predict_sudoku(file: UploadFile = File(...)):
 
     try:
         image = load_image(filename)
+        image=add_padding_to_image_array(image)
         blurred = preprocess_image(image)
         thresh = threshold_image(blurred)
         contours = find_contours(thresh)
